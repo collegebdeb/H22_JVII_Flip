@@ -367,7 +367,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vitesseMarche: 5
-  rigidbody: {fileID: 0}
+  rigidbody: {fileID: 547642730}
+  animateurJoueur: {fileID: 547642726}
 --- !u!50 &547642730
 Rigidbody2D:
   serializedVersion: 4
