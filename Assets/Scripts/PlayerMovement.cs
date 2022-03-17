@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     // Ceci est pour assigner les animations de la chasseuse avec le mouvement du joueur
     public Animator animateurJoueur;
 
-    public bool personnageDirectionDroit = true;
+    public bool personnageDirectionDroit;
 
     // Update is called once per frame
     void Update()
@@ -31,29 +31,10 @@ public class PlayerMovement : MonoBehaviour
        // Ceci est l'assignement de l'animation selon l'axe de mouvement du personnage et selon si
        // le joueur bouge. Sinon, la chasseuse reste en animation Idle
        animateurJoueur.SetFloat("mouvementHorizontale", mouvementJoueur.x); 
-       Debug.Log(mouvementJoueur);
+       // Debug.Log(mouvementJoueur);
        animateurJoueur.SetFloat("mouvementVerticale", mouvementJoueur.y); 
        animateurJoueur.SetFloat("joueurVitesse", mouvementJoueur.sqrMagnitude);
 
-       if (mouvementJoueur.x > 0 && personnageDirectionDroit)
-       {
-           Flip(); 
-       }
-    //    else if (mouvementJoueur.x < 0 && personnageDirectionDroit)
-    //     {
-    //        Flip(); 
-    //    }   
-    }
-
-    // Ceci est pour changer la direction du personnage en idle lorsqu'il a finit de bouger
-    // est déterminé par son direction antécédant 
-    private void Flip()
-    {
-        personnageDirectionDroit = !personnageDirectionDroit;
-
-        Vector3 Scale = transform.localScale;
-        Scale.x *= -1;
-        transform.localScale = Scale; 
     }
 
     void FixedUpdate()
@@ -63,5 +44,23 @@ public class PlayerMovement : MonoBehaviour
 
        // Le rigidbody va bouger à la nouvelle position grâce à l'input du joueur
        rigidbody.MovePosition(rigidbody.position + mouvementJoueur * vitesseMarche * Time.fixedDeltaTime);
+       
+       Flip(mouvementJoueur.x);
+    }
+
+    // Ceci est pour changer la direction du personnage en idle lorsqu'il a finit de bouger
+    // est déterminé par son direction antécédant 
+    private void Flip(float joueurHorizontale)
+    {
+       if (joueurHorizontale > 0 && !personnageDirectionDroit || joueurHorizontale < 0 && personnageDirectionDroit)
+       {
+           personnageDirectionDroit = !personnageDirectionDroit;
+
+           Vector3 theScale = transform.localScale;
+
+           theScale.x *= -1;
+
+           transform.localScale = theScale;
+       } 
     }
 }

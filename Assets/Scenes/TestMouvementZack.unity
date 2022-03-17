@@ -369,6 +369,7 @@ MonoBehaviour:
   vitesseMarche: 5
   rigidbody: {fileID: 547642730}
   animateurJoueur: {fileID: 547642726}
+  personnageDirectionDroit: 1
 --- !u!50 &547642730
 Rigidbody2D:
   serializedVersion: 4
