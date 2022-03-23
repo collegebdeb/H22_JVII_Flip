@@ -39,7 +39,7 @@ public class teleportationTempsJoueur : MonoBehaviour
     // téléporteurs dans la code.
     void testTeleportation()
     {
-        for (int i = 0; i <= 6; i++)
+        for (int i = 0; i < teleporteur.Length; i++)
         {
             teleporteur[i] = GameObject.Find("Teleporteur"+i).transform;
         }
