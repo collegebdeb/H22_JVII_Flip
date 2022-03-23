@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float vitesseMarche = 5f; 
 
     // l'enregistrement physique du personnage et du joueur dans le monde
-    public Rigidbody2D rigidbody;
+    public Rigidbody2D rb;
 
     // Utilisé pour enregistrer le valeur du mouvement du joueur
     // puis l'utiliser dans notre FixedUpdate afin de programmer le physique du mouvement
@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
        // frame faisant celui-ci plus fiable.
 
        // Le rigidbody va bouger à la nouvelle position grâce à l'input du joueur
-       rigidbody.MovePosition(rigidbody.position + mouvementJoueur * vitesseMarche * Time.fixedDeltaTime);
+       rb.MovePosition(rb.position + mouvementJoueur * vitesseMarche * Time.fixedDeltaTime);
        
        Flip(mouvementJoueur.x);
     }
