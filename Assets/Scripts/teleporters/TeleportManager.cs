@@ -9,36 +9,41 @@ public class TeleportManager : MonoBehaviour
     public GameObject[] Teleporters = new GameObject[2];
     public Text InteractTP;
     public bool CanTp;
+    public Transform TpDestination;
 
     // Start is called before the first frame update
     void Start()
     {
         FileTeleportation();
         InteractTP = GameObject.Find("CanTeleport").GetComponent<Text>();
+        TpDestination = TpPos[1];
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
 
-    private void OnTriggerStay(Collider other)
+    }
+    private void OnTriggerEnter2D(Collider2D collision) //Si le joueur entre dans le TP
     {
-        if (other.gameObject.name.StartsWith("Teleporter"))
+        SetDestination(collision);
+        if (collision.gameObject.name.StartsWith("Teleporter")) //Activer bool pour tp
         {
-            InteractTP.text = "Press E to teleport";
+            InteractTP.text = "Can Teleport";
+            CanTp = true;
         }
-        
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+
+
+    private void OnTriggerExit2D(Collider2D collision) // Si le joueur quitte le TP
     {
-        if (collision.gameObject.name.StartsWith("Teleporter"))
+        if (collision.gameObject.name.StartsWith("Teleporter"))//Désactiver bool pour tp
         {
             InteractTP.text = "";
+            CanTp = false;
         }
-        
+
     }
 
     void FileTeleportation() //Entrer tout les positions des points de téléportation sur la map
@@ -49,7 +54,22 @@ public class TeleportManager : MonoBehaviour
         }
         for (int i = 0; i < Teleporters.Length; i++)
         {
-            Teleporters[i] = GameObject.Find("Teleporters" + i);
+            Teleporters[i] = GameObject.Find("Teleporter" + i);
+        }
+    }
+    void SetDestination(Collider2D collider) //change l'endroit de téléportation à chaque fois que le personnage touche un téléporteur
+    {
+        int number = int.Parse(collider.name.Substring(10));
+        if (number % 2 == 0) //Vérifier si nombre pair ou impair, indique l'endroit de téléportation avec
+        {
+            TpDestination = TpPos[number + 1]; //set destination
+        }
+        else
+        {
+            TpDestination = TpPos[number - 1];
         }
     }
 }
+
+
+
