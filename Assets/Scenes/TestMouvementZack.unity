@@ -892,8 +892,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 438998b3b7457dc429417a1bfd650ce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraScene: {fileID: 99947792}
   baseDeTir: {fileID: 1450707851}
-  flechePrefab: {fileID: 1819433460947135282, guid: ee542f16acb23ef4fba78e5add33be2b, type: 3}
+  flechePrefab: {fileID: 7557656041305085843, guid: 42603e9ec21cbc94394d72e461d2de3c, type: 3}
   flecheVitesse: 20
 --- !u!114 &547642733
 MonoBehaviour:

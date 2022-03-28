@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class tirDeFleche : MonoBehaviour
 {   
+    // À utiliser éventuellement pour viser nos flèches
+    private Vector2 positionMouse;
+    public Camera cameraScene;
+
     // Références pour le prefab de la flèche de base et le point de tir sur le joueur
     public Transform baseDeTir;
     public GameObject flechePrefab;
@@ -14,9 +18,15 @@ public class tirDeFleche : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
+
         // Quand le joueur va tirer sur la touche pour tirer, le fonction de TirerFleche va s'activer
         if(Input.GetButtonDown("Fire1"))
         {
+            //récupérer la position de la souris
+            viseInput();
+            
             TirerFleche();
         }
     }
@@ -30,5 +40,15 @@ public class tirDeFleche : MonoBehaviour
         GameObject flecheDeBase = Instantiate(flechePrefab, baseDeTir.position, baseDeTir.rotation);
         Rigidbody2D rbFleche = flecheDeBase.GetComponent<Rigidbody2D>();
         rbFleche.AddForce(baseDeTir.up * flecheVitesse, ForceMode2D.Impulse);
+    }
+
+    void viseInput()
+    {
+        positionMouse = cameraScene.ScreenToWorldPoint(Input.mousePosition);
+        Debug.Log(positionMouse);
+        //trouve position personnage, qui est dans la même espace que la position du curseur
+        //Fait un vecteur 2 pour calculer la distance de la flèche, position mouse - position player = direction vecteur 2 de la fleche
+        //normalize la direction vers le valeur d'un vecteur entier
+        // positionPlayer = 
     }
 }
