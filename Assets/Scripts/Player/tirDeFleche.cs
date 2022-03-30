@@ -8,6 +8,9 @@ public class tirDeFleche : MonoBehaviour
     private Vector2 positionMouse;
     public Camera cameraScene;
 
+    // Pour indiquer la position du personnage
+    private Vector2 positionPlayer;
+
     // Références pour le prefab de la flèche de base et le point de tir sur le joueur
     public Transform baseDeTir;
     public GameObject flechePrefab;
