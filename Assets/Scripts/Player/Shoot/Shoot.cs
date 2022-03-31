@@ -57,7 +57,7 @@ public class Shoot : MonoBehaviour
         print("Called!");
         while(true)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             canShoot = true;
         }
     }
