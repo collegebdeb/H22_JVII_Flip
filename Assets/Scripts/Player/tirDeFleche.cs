@@ -8,8 +8,9 @@ public class tirDeFleche : MonoBehaviour
     private Vector2 positionMouse;
     public Camera cameraScene;
 
+    // Ceci est pour éventuellement attribuer une direction à nos flèches
     private Vector2 directionFleche;
-    
+    private Quaternion directionFlecheTest; 
 
     // Pour indiquer la position du personnage
     private Vector2 positionPlayer;
@@ -46,6 +47,11 @@ public class tirDeFleche : MonoBehaviour
     // appliquer une force 
     void TirerFleche()
     {
+        // Tout d'abord, il faut convertir notre Vector2 de direction fleche en Quaternion pour diriger
+        // notre instance
+        directionFlecheTest = Quaternion.Euler(directionFlecheTest.x, directionFlecheTest.y, 0);
+
+
         // Nécessaire pour que le GameObject du flèche utilise ce code comme référence dans le futur
         // et pour assurer qu'il aille un rigidbody 
         GameObject flecheDeBase = Instantiate(flechePrefab, baseDeTir.position, baseDeTir.rotation);
