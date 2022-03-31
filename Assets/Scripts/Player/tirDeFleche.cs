@@ -8,6 +8,9 @@ public class tirDeFleche : MonoBehaviour
     private Vector2 positionMouse;
     public Camera cameraScene;
 
+    private Vector2 directionFleche;
+    
+
     // Pour indiquer la position du personnage
     private Vector2 positionPlayer;
     private GameObject playerObj = null;
@@ -28,7 +31,7 @@ public class tirDeFleche : MonoBehaviour
             playerObj = GameObject.FindGameObjectWithTag("Player");
         }
 
-        Debug.Log("Position Joueur : X = " + playerObj.transform.position.x + " Position Joueur : Y = " + playerObj.transform.position.x);
+        // Debug.Log("Position Joueur : X = " + playerObj.transform.position.x + " Position Joueur : Y = " + playerObj.transform.position.y);
 
         // Quand le joueur va tirer sur la touche pour tirer, le fonction de TirerFleche va s'activer
         if(Input.GetButtonDown("Fire1"))
@@ -55,11 +58,9 @@ public class tirDeFleche : MonoBehaviour
     void viseInput()
     {
         positionMouse = cameraScene.ScreenToWorldPoint(Input.mousePosition);
-        Debug.Log(positionMouse);
-        //trouve position personnage, qui est dans la même espace que la position du curseur
-        //Fait un vecteur 2 pour calculer la distance de la flèche, position mouse - position player = direction vecteur 2 de la fleche
-        //normalize la direction vers le valeur d'un vecteur entier
-        Debug.Log(playerObj);
-        //positionPlayer = 
+        // Debug.Log(positionMouse);
+        directionFleche = (positionMouse - positionPlayer);
+        directionFleche.Normalize();
+        Debug.Log("Direction fleche : " + directionFleche);
     }
 }
