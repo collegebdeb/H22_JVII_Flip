@@ -7,12 +7,16 @@ public class Shoot : MonoBehaviour
     public float offset = 0.0f;
     public GameObject arrow;
     public Transform firepoint;
+    public bool canShoot;
+    public bool timer;
+    
 
 
     // Use this for initialization
     void Start()
     {
-
+        canShoot = true;
+        timer = true;
     }
 
     // Update is called once per frame
@@ -20,9 +24,16 @@ public class Shoot : MonoBehaviour
     {
         Rotation();
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && canShoot)
         {
             ShootArrow();
+            canShoot = false;
+
+            if(timer)
+            {
+                StartCoroutine(ShootTimer()); // empêche le joueur de tirer en succession, à changer
+                timer = false;
+            }
         }
     }
 
@@ -38,5 +49,16 @@ public class Shoot : MonoBehaviour
     void ShootArrow()
     {
         Instantiate(arrow, firepoint.position, transform.rotation);
+       
+    }
+
+    private IEnumerator ShootTimer() //Basique et fonctionne mal, à changer, Timer d'attaque
+    {
+        print("Called!");
+        while(true)
+        {
+            yield return new WaitForSeconds(2f);
+            canShoot = true;
+        }
     }
 }

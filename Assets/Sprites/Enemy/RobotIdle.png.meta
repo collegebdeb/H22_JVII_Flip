@@ -1,31 +1,46 @@
 fileFormatVersion: 2
-guid: 45a54a6cb2465e14197b4f730f1571af
+guid: 49103754a921aa94d9903d0ca1086f07
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7694756812797047406
-    second: WalkUp_0
+      213: -4108333124764306383
+    second: RobotIdle_0
   - first:
-      213: -1133897906567512007
-    second: WalkUp_1
+      213: 5618838666857993717
+    second: RobotIdle_1
   - first:
-      213: 2648508838335721673
-    second: WalkUp_2
+      213: 8637000601859376473
+    second: RobotIdle_2
   - first:
-      213: 2523327143094749142
-    second: WalkUp_3
+      213: 8482484221167195235
+    second: RobotIdle_3
   - first:
-      213: 552338270296004673
-    second: WalkUp_4
+      213: 535122695272812825
+    second: RobotIdle_4
   - first:
-      213: -3211099760397705289
-    second: WalkUp_5
+      213: -4543481905214882903
+    second: RobotIdle_5
   - first:
-      213: 5597605137126702037
-    second: WalkUp_6
+      213: 7926627179226543441
+    second: RobotIdle_6
   - first:
-      213: 3556794592236347340
-    second: WalkUp_7
+      213: 3985025430383673753
+    second: RobotIdle_7
+  - first:
+      213: 397527494693211847
+    second: RobotIdle_8
+  - first:
+      213: -3409551331281943916
+    second: RobotIdle_9
+  - first:
+      213: 5120164409205814671
+    second: RobotIdle_10
+  - first:
+      213: -412083682288222203
+    second: RobotIdle_11
+  - first:
+      213: -8373500106492560276
+    second: RobotIdle_12
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -56,7 +71,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -70,7 +85,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -92,7 +107,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -104,55 +119,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Lumin
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: tvOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -164,19 +131,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -187,169 +142,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WalkUp_0
+      name: RobotIdle_0
       rect:
         serializedVersion: 2
-        x: 2
+        x: 0
         y: 0
-        width: 28
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 40
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29d0734827bb63590800000000000000
-      internalID: -7694756812797047406
+      spriteID: 134f3773ac44cf6c0800000000000000
+      internalID: -4108333124764306383
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkUp_1
+      name: RobotIdle_1
       rect:
         serializedVersion: 2
-        x: 35
+        x: 40
         y: 0
-        width: 27
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 40
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9300c739cd59340f0800000000000000
-      internalID: -1133897906567512007
+      spriteID: 5f5dc446fff1afd40800000000000000
+      internalID: 5618838666857993717
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkUp_2
+      name: RobotIdle_2
       rect:
         serializedVersion: 2
-        x: 67
+        x: 80
         y: 0
-        width: 28
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 40
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c0bb7d81c461c420800000000000000
-      internalID: 2648508838335721673
+      spriteID: 955c9ae594accd770800000000000000
+      internalID: 8637000601859376473
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkUp_3
+      name: RobotIdle_3
       rect:
         serializedVersion: 2
-        x: 99
+        x: 120
         y: 0
-        width: 27
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 40
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d78340eaa8a40320800000000000000
-      internalID: 2523327143094749142
+      spriteID: 364d68ff476d7b570800000000000000
+      internalID: 8482484221167195235
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkUp_4
+      name: RobotIdle_4
       rect:
         serializedVersion: 2
-        x: 130
+        x: 160
         y: 0
-        width: 28
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 40
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 148d8dcfabc4aa700800000000000000
-      internalID: 552338270296004673
+      spriteID: 9115cf291432d6700800000000000000
+      internalID: 535122695272812825
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkUp_5
+      name: RobotIdle_5
       rect:
         serializedVersion: 2
-        x: 162
+        x: 200
         y: 0
-        width: 27
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 40
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7bf1723f7c1ef63d0800000000000000
-      internalID: -3211099760397705289
+      spriteID: 9ab7044974f42f0c0800000000000000
+      internalID: -4543481905214882903
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkUp_6
+      name: RobotIdle_6
       rect:
         serializedVersion: 2
-        x: 193
+        x: 240
         y: 0
-        width: 28
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 40
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5dbb65ff630bead40800000000000000
-      internalID: 5597605137126702037
+      spriteID: 15531c42c69010e60800000000000000
+      internalID: 7926627179226543441
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkUp_7
+      name: RobotIdle_7
       rect:
         serializedVersion: 2
-        x: 226
+        x: 280
         y: 0
-        width: 27
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 40
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ccf174146d54c5130800000000000000
-      internalID: 3556794592236347340
+      spriteID: 991caeee387ad4730800000000000000
+      internalID: 3985025430383673753
       vertices: []
       indices: 
       edges: []
