@@ -31,8 +31,6 @@ public class tirDeFleche : MonoBehaviour
             playerObj = GameObject.FindGameObjectWithTag("Player");
         }
 
-        // Debug.Log("Position Joueur : X = " + playerObj.transform.position.x + " Position Joueur : Y = " + playerObj.transform.position.y);
-
         // Quand le joueur va tirer sur la touche pour tirer, le fonction de TirerFleche va s'activer
         if(Input.GetButtonDown("Fire1"))
         {
@@ -55,10 +53,11 @@ public class tirDeFleche : MonoBehaviour
         rbFleche.AddForce(baseDeTir.up * flecheVitesse, ForceMode2D.Impulse);
     }
 
+    // Cette fonction a comme but d'enregistrer la position du curseur de souris et de le soustraire
+    // par la position du joueur, afin de chercher la direction de la flèche
     void viseInput()
     {
         positionMouse = cameraScene.ScreenToWorldPoint(Input.mousePosition);
-        // Debug.Log(positionMouse);
         directionFleche = (positionMouse - positionPlayer);
         directionFleche.Normalize();
         Debug.Log("Direction fleche : " + directionFleche);
