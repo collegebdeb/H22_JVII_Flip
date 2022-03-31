@@ -17,4 +17,18 @@ public class Arrow : MonoBehaviour
     {
         rb.velocity = transform.right * speed;
     }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.tag == "Wall" || collision.tag == "Ennemy")
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
+
+
 }

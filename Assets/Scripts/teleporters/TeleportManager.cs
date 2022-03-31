@@ -24,11 +24,22 @@ public class TeleportManager : MonoBehaviour
     {
 
     }
-    private void OnTriggerEnter2D(Collider2D collision) //Si le joueur entre dans le TP
+    private void OnTriggerEnter2D(Collider2D other) //Si le joueur entre dans le TP
     {
-        SetDestination(collision);
-        if (collision.gameObject.name.StartsWith("Teleporter")) //Activer bool pour tp
+       
+        
+        if (other.gameObject.name.StartsWith("Teleporter")) //Activer bool pour tp
         {
+            int number = int.Parse(other.name.Substring(10));
+            if (number % 2 == 0) //Vérifier si nombre pair ou impair, indique l'endroit de téléportation avec
+            {
+                TpDestination = TpPos[number + 1]; //set destination
+            }
+            else
+            {
+                TpDestination = TpPos[number - 1];
+            }
+
             InteractTP.text = "Can Teleport";
             CanTp = true;
         }
@@ -36,9 +47,9 @@ public class TeleportManager : MonoBehaviour
 
 
 
-    private void OnTriggerExit2D(Collider2D collision) // Si le joueur quitte le TP
+    private void OnTriggerExit2D(Collider2D other) // Si le joueur quitte le TP
     {
-        if (collision.gameObject.name.StartsWith("Teleporter"))//Désactiver bool pour tp
+        if (other.gameObject.name.StartsWith("Teleporter"))//Désactiver bool pour tp
         {
             InteractTP.text = "";
             CanTp = false;
@@ -57,17 +68,9 @@ public class TeleportManager : MonoBehaviour
             Teleporters[i] = GameObject.Find("Teleporter" + i);
         }
     }
-    void SetDestination(Collider2D collider) //change l'endroit de téléportation à chaque fois que le personnage touche un téléporteur
+    void SetDestination(Collider2D other) //change l'endroit de téléportation à chaque fois que le personnage touche un téléporteur
     {
-        int number = int.Parse(collider.name.Substring(10));
-        if (number % 2 == 0) //Vérifier si nombre pair ou impair, indique l'endroit de téléportation avec
-        {
-            TpDestination = TpPos[number + 1]; //set destination
-        }
-        else
-        {
-            TpDestination = TpPos[number - 1];
-        }
+      
     }
 }
 
