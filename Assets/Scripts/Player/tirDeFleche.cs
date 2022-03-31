@@ -10,6 +10,7 @@ public class tirDeFleche : MonoBehaviour
 
     // Pour indiquer la position du personnage
     private Vector2 positionPlayer;
+    private GameObject playerObj = null;
 
     // Références pour le prefab de la flèche de base et le point de tir sur le joueur
     public Transform baseDeTir;
@@ -20,14 +21,20 @@ public class tirDeFleche : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        // Ceci est pour identifier la position du joueur 
+        if (playerObj == null)
+        {
+            playerObj = GameObject.FindGameObjectWithTag("Player");
+        }
 
-
+        Debug.Log("Position Joueur : X = " + playerObj.transform.position.x + " Position Joueur : Y = " + playerObj.transform.position.x);
 
         // Quand le joueur va tirer sur la touche pour tirer, le fonction de TirerFleche va s'activer
         if(Input.GetButtonDown("Fire1"))
         {
             //récupérer la position de la souris
+
             viseInput();
             
             TirerFleche();
@@ -52,6 +59,7 @@ public class tirDeFleche : MonoBehaviour
         //trouve position personnage, qui est dans la même espace que la position du curseur
         //Fait un vecteur 2 pour calculer la distance de la flèche, position mouse - position player = direction vecteur 2 de la fleche
         //normalize la direction vers le valeur d'un vecteur entier
-        // positionPlayer = 
+        Debug.Log(playerObj);
+        //positionPlayer = 
     }
 }
