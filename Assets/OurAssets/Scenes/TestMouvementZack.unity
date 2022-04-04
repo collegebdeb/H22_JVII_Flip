@@ -5058,7 +5058,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8.26544
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -10618,7 +10618,6 @@ GameObject:
   - component: {fileID: 1009590531}
   - component: {fileID: 1009590533}
   - component: {fileID: 1009590534}
-  - component: {fileID: 1009590535}
   - component: {fileID: 1009590538}
   - component: {fileID: 1009590537}
   - component: {fileID: 1009590536}
@@ -10755,26 +10754,11 @@ MonoBehaviour:
   aggro: 0
   Alerted: 0
   Player: {fileID: 547642725}
-  range: 7
+  range: 10
   SetDestination: {fileID: 1009590536}
+  path: {fileID: 1009590537}
   Idleposition: {fileID: 1781051857}
   state: 0
---- !u!114 &1009590535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1009590529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2e9890f17e363944b121fc846f81876, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  stoppingDistance: 0
-  Aggro: 0
-  player: {fileID: 0}
 --- !u!114 &1009590536
 MonoBehaviour:
   m_ObjectHideFlags: 0
