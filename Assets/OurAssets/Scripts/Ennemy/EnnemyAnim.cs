@@ -33,10 +33,10 @@ public class EnnemyAnim : MonoBehaviour
 
     private void Start()
     {
-        Idleposition = this.gameObject.transform.GetChild(0).transform;
+        Idleposition = this.gameObject.transform.parent.transform;
         path = this.gameObject.GetComponent<AIPath>();
         SetDestination = this.gameObject.GetComponent<AIDestinationSetter>();
-        firescript = this.gameObject.transform.GetChild(1).GetComponent<ennemyFire>();
+        firescript = this.gameObject.transform.GetChild(0).GetComponent<ennemyFire>();
     }
 
     void Update()
