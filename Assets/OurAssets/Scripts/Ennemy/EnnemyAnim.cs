@@ -31,6 +31,14 @@ public class EnnemyAnim : MonoBehaviour
 
     public State state;
 
+    private void Start()
+    {
+        Idleposition = this.gameObject.transform.GetChild(0).transform;
+        path = this.gameObject.GetComponent<AIPath>();
+        SetDestination = this.gameObject.GetComponent<AIDestinationSetter>();
+        firescript = this.gameObject.transform.GetChild(1).GetComponent<ennemyFire>();
+    }
+
     void Update()
     {
         ChangeState();   //Changer le state

@@ -12,7 +12,7 @@ public class ennemyFire : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        firepoint = this.transform;
     }
 
     // Update is called once per frame
