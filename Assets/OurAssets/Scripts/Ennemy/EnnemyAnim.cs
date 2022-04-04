@@ -17,6 +17,9 @@ public class EnnemyAnim : MonoBehaviour
     float currentposition;
     float lastposition = 0;
 
+    public ennemyFire firescript;
+
+
     public enum State // différents states pour l'ennemi
     {
         Idle,
@@ -44,6 +47,7 @@ public class EnnemyAnim : MonoBehaviour
     void AfterCharge() //Une fois que le robot a finit de charger et de tirer, regarder ou se trouve le joueur pour déterminer son état
     {
         animator.SetBool("Fire", false);
+        firescript.ShootArrow();
 
         if (Vector3.Distance(transform.position, GameManager.Instance.Player.position) == 0)
         {
