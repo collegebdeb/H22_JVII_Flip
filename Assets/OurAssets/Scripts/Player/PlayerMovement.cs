@@ -104,23 +104,27 @@ public class PlayerMovement : MonoBehaviour
 
     void DashtargetClamp()
     {
-        /*float clampx = 10f;
-        float clampy = 10f;
-        Vector3 Newposition;
-        Vector3 mouseposition;
-        Newposition = transform.position;
-        mouseposition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Newposition.x = Mathf.Clamp(mouseposition.x, -clampx, clampx);
-        Newposition.y = Mathf.Clamp(mouseposition.y, -clampy, clampy);
-        dashtarget.position = Newposition;*/
-        Vector3 initialpos = transform.position;
-        Vector3 mouseposition;
+        float radius = 5f;
 
-        mouseposition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        var allowedPos = mouseposition - initialpos;
-        allowedPos = Vector3.ClampMagnitude(allowedPos, 8.0f);
-        dashtarget.position = initialpos + allowedPos;
+        Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+        // Calculate the offset vector from the transform.position of the circle to our position
+        Vector2 offset = position - transform.position;
+        // Calculate the linear distance of this offset vector
+        float distance = offset.magnitude;
+        if (radius < distance)
+        {
+            // If the distance is more than our radius we need to clamp
+            // Calculate the direction to our position
+            Vector3 direction = offset / distance;
+            // Calculate our new position using the direction to our old position and our radius
+            position = transform.position + direction * radius;
+            dashtarget.position = position;
+        }
+        else
+        {
+            dashtarget.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0,0,13);
+        }
     }
 
  
