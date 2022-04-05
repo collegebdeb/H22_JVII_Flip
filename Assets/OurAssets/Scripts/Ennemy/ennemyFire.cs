@@ -34,7 +34,6 @@ public class ennemyFire : MonoBehaviour
     public void ShootArrow()
     {
         // Instantiate(bullet, firepoint.position, transform.rotation);
-        print("Lmao");
         Instantiate(bullet, transform.position, transform.rotation);
 
     }

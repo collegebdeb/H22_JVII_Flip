@@ -24,15 +24,13 @@ public class Shoot : MonoBehaviour
     {
         Rotation();
 
-        if (Input.GetMouseButtonDown(0) && canShoot)
+        if (Input.GetMouseButtonDown(0))
         {
-            ShootArrow();
-            canShoot = false;
-
-            if(timer)
+            if (canShoot)
             {
+                ShootArrow(); //Tirer une flêche
+                canShoot = false;
                 StartCoroutine(ShootTimer()); // empêche le joueur de tirer en succession, à changer
-                timer = false;
             }
         }
     }
@@ -55,10 +53,9 @@ public class Shoot : MonoBehaviour
     private IEnumerator ShootTimer() //Basique et fonctionne mal, à changer, Timer d'attaque
     {
         print("Called!");
-        while(true)
-        {
+        
             yield return new WaitForSeconds(1f);
             canShoot = true;
-        }
+
     }
 }

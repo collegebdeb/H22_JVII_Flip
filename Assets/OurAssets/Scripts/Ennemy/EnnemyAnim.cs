@@ -13,6 +13,7 @@ public class EnnemyAnim : MonoBehaviour
     public AIDestinationSetter SetDestination;
     public AIPath path;
     public Transform Idleposition;
+    public bool vulnerable;
 
     float currentposition;
     float lastposition = 0;
@@ -33,10 +34,10 @@ public class EnnemyAnim : MonoBehaviour
 
     private void Start()
     {
-        Idleposition = this.gameObject.transform.parent.transform;
-        path = this.gameObject.GetComponent<AIPath>();
-        SetDestination = this.gameObject.GetComponent<AIDestinationSetter>();
-        firescript = this.gameObject.transform.GetChild(0).GetComponent<ennemyFire>();
+        Idleposition = gameObject.transform.parent.transform;
+        path = gameObject.GetComponent<AIPath>();
+        SetDestination = gameObject.GetComponent<AIDestinationSetter>();
+        firescript = gameObject.transform.GetChild(0).GetComponent<ennemyFire>();
     }
 
     void Update()
@@ -48,6 +49,7 @@ public class EnnemyAnim : MonoBehaviour
 
     void Chase() //partir la chasse quand le joueur est assez proche, fonction appelée dans l'animation
     {
+        vulnerable = false;
         state = State.Chase;
         animator.SetBool("ReachedPos", false);
     }
@@ -61,10 +63,12 @@ public class EnnemyAnim : MonoBehaviour
         {
             Alerted = false;
             state = State.Idle;
+            vulnerable = false;
         }
         else
         {
             state = State.Chase;
+            vulnerable = false;
         }
     }
     void CheckPosition()
@@ -91,18 +95,6 @@ public class EnnemyAnim : MonoBehaviour
             animator.SetBool("Aggro", false);
         }
     }
-
-
-    /* if (Vector3.Distance(transform.position, GameManager.Instance.Player.position) >= range)
-        {
-            Alerted = false;
-            aggro = false;
-            state = State.Idle;
-            animator.SetBool("Fire", false);
-         
-        }*/
-
-
 
 void ChangeState() // Change l'état de l'ennemi
     {
@@ -141,6 +133,7 @@ void ChangeState() // Change l'état de l'ennemi
 
             case State.Fire:
                 {
+                    vulnerable = true;
                     animator.SetBool("Fire", true);
                     path.maxSpeed = 0;
                 } break;
