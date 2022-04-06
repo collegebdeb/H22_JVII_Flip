@@ -5753,6 +5753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  isdashing: 0
   dashtarget: {fileID: 1284380334}
   rb: {fileID: 547642730}
   child: {fileID: 0}

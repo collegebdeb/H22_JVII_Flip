@@ -9,7 +9,15 @@ public class PlayerMovement : MonoBehaviour
     float x;
     float y;
 
-    public Transform dashtarget;
+    float Dashspeed = 30;
+
+    public bool isdashing;
+
+    public GameObject dashtarget;
+    
+    Vector2 target;
+
+    
 
     // l'enregistrement physique du personnage et du joueur dans le monde
     public Rigidbody2D rb;
@@ -28,40 +36,73 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         child = gameObject.transform.GetChild(0).gameObject;
+        isdashing = false;
+        dashtarget = gameObject.transform.GetChild(1).gameObject;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        DashtargetClamp();
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Dash();
-            
+            isdashing = true;
+            print("pressed");
+            target = dashtarget.transform.position;
         }
 
-        DashtargetClamp();
+        if(isdashing)
+        {
+            Dash();
+        }
 
         MoveInput(); // donner vitesse joueur
 
-       // On cherche l'input du donnée horizontale ou verticale du joueur lorsqu'il bouge 
-       x = Input.GetAxisRaw("Horizontal");
-       y = Input.GetAxisRaw("Vertical");
-    
-       // Ceci est l'assignement de l'animation selon l'axe de mouvement du personnage et selon si
-       // le joueur bouge. Sinon, la chasseuse reste en animation Idle
+       
 
-       animateurJoueur.SetFloat("mouvementHorizontale", move.x); 
-       animateurJoueur.SetFloat("mouvementVerticale", move.y); 
-       animateurJoueur.SetFloat("joueurVitesse",  move.sqrMagnitude);
+        LEtsDraw();
 
+
+
+
+    }
+
+    private void LEtsDraw()
+    {
+        //Vector3 lip = dashtarget.transform.position;
+        Debug.DrawLine(transform.position, dashtarget.transform.position, Color.red);
     }
 
     void Dash()
     {
+        /*RaycastHit2D hit = Physics2D.Raycast(transform.position, dashtarget.transform.position, 3f);
+        if (hit.collider.tag == "Wall")
+        {
+            print("jots");
+            isdashing = false;
+            return;
+        }*/
 
-        // rb.AddForce(child.transform.right * 4000, ForceMode2D.Force);
-        // rb.MovePosition(dashtarget.transform.position * 5f*Time.deltaTime);
+        //ray = Physics2D.Raycast();
 
+
+
+        transform.position = Vector2.MoveTowards(transform.position, target, Dashspeed * Time.deltaTime);
+
+        if (Vector2.Distance(transform.position,target) < 0.1f)
+        {
+            isdashing = false;
+        }
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Wall" || collision.gameObject.name.StartsWith("Ennemy"))
+        {
+            isdashing = false;
+        }
     }
 
     void FixedUpdate()
@@ -92,9 +133,25 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveInput()
     {
+        if(isdashing)
+        {
+            return;
+        }
+         
         x = Input.GetAxisRaw("Horizontal");
         y = Input.GetAxisRaw("Vertical");
         move = new Vector2(x, y).normalized;
+
+        // On cherche l'input du donnée horizontale ou verticale du joueur lorsqu'il bouge 
+        x = Input.GetAxisRaw("Horizontal");
+        y = Input.GetAxisRaw("Vertical");
+
+        // Ceci est l'assignement de l'animation selon l'axe de mouvement du personnage et selon si
+        // le joueur bouge. Sinon, la chasseuse reste en animation Idle
+
+        animateurJoueur.SetFloat("mouvementHorizontale", move.x);
+        animateurJoueur.SetFloat("mouvementVerticale", move.y);
+        animateurJoueur.SetFloat("joueurVitesse", move.sqrMagnitude);
     }
 
     void Move()
@@ -119,11 +176,11 @@ public class PlayerMovement : MonoBehaviour
             Vector3 direction = offset / distance;
             // Calculate our new position using the direction to our old position and our radius
             position = transform.position + direction * radius;
-            dashtarget.position = position;
+            dashtarget.transform.position = position;
         }
         else
         {
-            dashtarget.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0,0,13);
+            dashtarget.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0,0,13);
         }
     }
 
