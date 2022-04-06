@@ -10886,6 +10886,7 @@ MonoBehaviour:
   SetDestination: {fileID: 1009590536}
   path: {fileID: 1009590537}
   Idleposition: {fileID: 1781051857}
+  vulnerable: 0
   firescript: {fileID: 2039484225}
   state: 0
 --- !u!114 &1009590535
@@ -10901,6 +10902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthcount: 0
+  anim: {fileID: 0}
 --- !u!114 &1009590536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13356,8 +13358,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1976282493}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.2398957, y: -2.158935, z: 12.049981}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -8.314, y: -2.719, z: 12.049981}
+  m_LocalScale: {x: 0.6970245, y: 0.6970245, z: 0.6970245}
   m_Children: []
   m_Father: {fileID: 1180705248}
   m_RootOrder: 1
