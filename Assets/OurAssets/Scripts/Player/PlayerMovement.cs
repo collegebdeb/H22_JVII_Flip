@@ -43,15 +43,24 @@ public class PlayerMovement : MonoBehaviour
             isdashing = true;
             print("pressed");
             target = dashtarget.transform.position;
+            
         }
 
-        if(isdashing)
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            
+        }
+        
+
+        if (isdashing)
         {
             Dash();
         }
 
         MoveInput(); // donner vitesse joueur
         Interract();
+        LEtsDraw();
+        CheckForCollisionDash();
     }
 
     public void Interract()
@@ -71,26 +80,29 @@ public class PlayerMovement : MonoBehaviour
     
     }
 
-    private void LEtsDraw() //RaycastTest
+    void CheckForCollisionDash()
     {
-        //Vector3 lip = dashtarget.transform.position;
-        Debug.DrawLine(transform.position, dashtarget.transform.position, Color.red);
-    }
+        print("ook");
+     
 
-    void Dash()
+        
+    }
+    private void LEtsDraw()
     {
-        /*RaycastHit2D hit = Physics2D.Raycast(transform.position, dashtarget.transform.position, 3f);
+        //Vector3 lip = dashtarget.transform.position; 
+        Debug.DrawLine(transform.position, dashtarget.transform.position, Color.red);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dashtarget.transform.position, 5);
         if (hit.collider.tag == "Wall")
         {
             print("jots");
-            isdashing = false;
-            return;
-        }*/
 
-        //ray = Physics2D.Raycast();
+        }
 
-        
+    }
 
+
+    void Dash()
+    {
         transform.position = Vector2.MoveTowards(transform.position, target, Dashspeed * Time.deltaTime);
 
         if (Vector2.Distance(transform.position,target) < 0.1f)

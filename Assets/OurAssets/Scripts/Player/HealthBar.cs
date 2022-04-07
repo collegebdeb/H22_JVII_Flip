@@ -33,7 +33,7 @@ public class HealthBar : MonoBehaviour
 
             Destroy(collision.gameObject);
 
-            if (hitpoints == 0)
+            if (hitpoints == -1)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
