@@ -89,6 +89,8 @@ public class PlayerMovement : MonoBehaviour
 
         //ray = Physics2D.Raycast();
 
+        
+
         transform.position = Vector2.MoveTowards(transform.position, target, Dashspeed * Time.deltaTime);
 
         if (Vector2.Distance(transform.position,target) < 0.1f)

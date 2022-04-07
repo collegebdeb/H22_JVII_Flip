@@ -6,6 +6,7 @@ public class Battery : MonoBehaviour
 {
 
     public PlayerMovement Interract; //Activer/Descativer interact
+    public HealthBar healthbar;
 
     public bool CanActivate;
     public bool CanGet;
@@ -16,6 +17,7 @@ public class Battery : MonoBehaviour
     void Start()
     {
         Interract = GameManager.Instance.Player.GetComponent<PlayerMovement>();
+        healthbar = GameManager.Instance.Player.GetComponent<HealthBar>();
         animator = gameObject.GetComponent<Animator>();
 
          //Get the crystal once its open
@@ -61,10 +63,13 @@ public class Battery : MonoBehaviour
         {
             animator.SetBool("Activate", true);
             StartCoroutine(Getit());
+            CanActivate = false;
         }
         if (CanGet)
         {
             animator.SetBool("Get", true);
+            healthbar.refill();
+            CanGet = false;
         }
        
     }
