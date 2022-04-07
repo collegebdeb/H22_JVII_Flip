@@ -8,6 +8,7 @@ TagManager:
   - arrow
   - Ennemy
   - Bullet 1
+  - Bullet
   layers:
   - Default
   - TransparentFX
