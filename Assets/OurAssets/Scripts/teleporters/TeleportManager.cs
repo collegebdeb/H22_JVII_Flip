@@ -6,56 +6,54 @@ using UnityEngine.UI;
 public class TeleportManager : MonoBehaviour
 {
     public Transform[] TpPos = new Transform[6];
-    public GameObject[] Teleporters = new GameObject[2];
-    public Text InteractTP;
-    public bool CanTp;
     public Transform TpDestination;
+
+    public GameObject[] Teleporters = new GameObject[2];
+    public bool CanTp;
+    
+
+    public PlayerMovement Interract; //Activer/Descativer interact
 
     // Start is called before the first frame update
     void Start()
     {
         FileTeleportation();
-        InteractTP = GameObject.Find("CanTeleport").GetComponent<Text>();
         TpDestination = TpPos[1];
+        Interract = GameManager.Instance.Player.GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+ 
     }
+
     private void OnTriggerEnter2D(Collider2D other) //Si le joueur entre dans le TP
     {
        
         
         if (other.gameObject.name.StartsWith("Teleporter")) //Activer bool pour tp
         {
-            int number = int.Parse(other.name.Substring(10));
-            if (number % 2 == 0) //Vérifier si nombre pair ou impair, indique l'endroit de téléportation avec
-            {
-                TpDestination = TpPos[number + 1]; //set destination
-            }
-            else
-            {
-                TpDestination = TpPos[number - 1];
-            }
-
-            InteractTP.text = "Can Teleport";
-            CanTp = true;
+            SetDestination(other);
+            Interract.CanInterract = true;
         }
     }
-
-
 
     private void OnTriggerExit2D(Collider2D other) // Si le joueur quitte le TP
     {
         if (other.gameObject.name.StartsWith("Teleporter"))//Désactiver bool pour tp
         {
-            InteractTP.text = "";
             CanTp = false;
+            Interract.CanInterract = false;
         }
 
     }
+
+   
+
+
+
+ 
 
     void FileTeleportation() //Entrer tout les positions des points de téléportation sur la map
     {
@@ -70,7 +68,16 @@ public class TeleportManager : MonoBehaviour
     }
     void SetDestination(Collider2D other) //change l'endroit de téléportation à chaque fois que le personnage touche un téléporteur
     {
-      
+        int number = int.Parse(other.name.Substring(10));
+        if (number % 2 == 0) //Vérifier si nombre pair ou impair, indique l'endroit de téléportation avec
+        {
+            TpDestination = TpPos[number + 1]; //set destination
+        }
+        else
+        {
+            TpDestination = TpPos[number - 1];
+        }
+        CanTp = true;
     }
 }
 
