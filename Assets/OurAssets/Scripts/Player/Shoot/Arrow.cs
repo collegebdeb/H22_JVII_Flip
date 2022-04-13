@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    public float speed = 10f;
+    public float speed = 15f;
     public Rigidbody2D rb;
     public TakeDammage hit;
     Vector3 startpos;
@@ -23,7 +23,7 @@ public class Arrow : MonoBehaviour
 
     void DestroyDistance()
     {
-        if (Vector3.Distance(startpos,transform.position) > 7)
+        if (Vector3.Distance(startpos,transform.position) > 12)
         {
             Destroy(gameObject);
         }
