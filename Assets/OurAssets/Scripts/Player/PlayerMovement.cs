@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     // la vitesse que le joueur va avoir lorsqu'il va bouger
     public float speed = 5f;
+    float x;
+    float y;
 
     public Rigidbody2D rb;
 
@@ -20,17 +22,17 @@ public class PlayerMovement : MonoBehaviour
     public Animator animateurJoueur;
 
     //DASH
-    float dashspeed;
-    float dashlenght = 0.5f, dashCooldown = 1f;
+    float dashspeed = 35f;
+    float dashTimer = 0.1f;
+    float CurrentDashTimer;
 
-    float dashCounter;
-    float DashCoolCounter;
-
-    public bool isdashing;
+    public bool isdashing, candash;
 
     private void Start()
     {
         isdashing = false;
+        candash = true;
+        CurrentDashTimer = dashTimer;
         dashtarget = gameObject.transform.GetChild(1).gameObject;
         
     }
@@ -40,6 +42,10 @@ public class PlayerMovement : MonoBehaviour
     {
         MoveInput(); // donner vitesse joueur
         Interract();
+        Dash();
+
+        if (Input.GetKeyDown(KeyCode.Space) && !isdashing && candash)
+        { isdashing = true; MoveDir = new Vector3(x, y).normalized; } // get vector direction when walking for dash
     }
 
     // Montrer le bouton pour interragir
@@ -62,13 +68,36 @@ public class PlayerMovement : MonoBehaviour
 
     public void Dash()
     {
+        if (isdashing)
+        {
+            rb.velocity = MoveDir * dashspeed;
+            CurrentDashTimer -= Time.deltaTime;
+        }
 
+        if (CurrentDashTimer <= 0)
+        {
+            CurrentDashTimer = dashTimer;
+            isdashing = false;
+            candash = false;
+            StartCoroutine(CanDashAgain());
+            
+        }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private IEnumerator CanDashAgain()
     {
-        StopDash(collision);
+        yield return new WaitForSeconds(1f);
+        candash = true;
+        print("go again");
     }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        StopDash(collision);  
+    }
+
+   
+   
 
     void StopDash(Collision2D collision)
     {
@@ -81,12 +110,11 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveInput()
     {
-        float x;
-        float y;
+        
         x = Input.GetAxisRaw("Horizontal");
         y = Input.GetAxisRaw("Vertical");
 
-        MoveDir = new Vector3(x, y).normalized; // get vector direction when walking for dash
+        
 
         if (isdashing) //stop moving if dashing
         {
