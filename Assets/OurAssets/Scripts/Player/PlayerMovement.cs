@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         candash = true;
         CurrentDashTimer = dashTimer;
         dashtarget = gameObject.transform.GetChild(1).gameObject;
-        
+        canbepushed = true;
     }
 
     // Update is called once per frame
@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         MoveInput(); // donner vitesse joueur
         Interract(); // Permet d'interragir
         Dash();      // velocity based dash
-
+        raycastDash();
         if (Input.GetKeyDown(KeyCode.C)) {  print("cast"); }
 
         if (Input.GetKeyDown(KeyCode.Space) && !isdashing && candash)
@@ -74,19 +74,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void raycastDash()
     {
+        MoveDir = new Vector3(x, y).normalized;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, MoveDir, 1f, Wall);
         if(hit.collider != null)
         {
-           
-            rb.AddForce(-MoveDir * 100f, ForceMode2D.Impulse);
-            print("push");
             isdashing = false;
-            canbepushed = false;
-            
         }
-       
-       
-
     }
 
     public void Dash()
@@ -96,10 +89,6 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = MoveDir * dashspeed;
             CurrentDashTimer -= Time.deltaTime;
            
-        }
-        if (CurrentDashTimer >= 0)
-        {
-            raycastDash();
         }
         if (CurrentDashTimer <= 0)
         {
@@ -114,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.collider.tag == "Wall")
         {
-            isdashing = false;
+       
         }
     }
 
