@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 move;
     Vector3 MoveDir;
+    Vector3 MoveDir2;
 
     public Animator animateurJoueur;
 
@@ -27,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
     float CurrentDashTimer;
 
     public bool isdashing, candash;
+
+    public LayerMask Wall; // For check
 
     private void Start()
     {
@@ -40,16 +43,20 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        MoveDir2 = MoveDir = new Vector3(x, y);
         MoveInput(); // donner vitesse joueur
-        Interract();
-        Dash();
+        Interract(); // Permet d'interragir
+        Dash();      // velocity based dash
+        raycastDash();
+        // Check for 
+
+        if (Input.GetKeyDown(KeyCode.C)) {  print("cast"); }
 
         if (Input.GetKeyDown(KeyCode.Space) && !isdashing && candash)
         { isdashing = true; MoveDir = new Vector3(x, y).normalized; } // get vector direction when walking for dash
     }
 
-    // Montrer le bouton pour interragir
-    public void Interract()
+    public void Interract() // Montrer le bouton pour interragir
     {
         if (transform.GetChild(2).gameObject != null)
         {
@@ -64,6 +71,17 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     
+    }
+
+    public void raycastDash()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, MoveDir, 3f, Wall);
+        if(hit.collider != null)
+        {
+            print(hit.collider.name);
+        }
+       
+
     }
 
     public void Dash()
@@ -97,7 +115,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
    
-   
 
     void StopDash(Collision2D collision)
     {
@@ -108,20 +125,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
+
     void MoveInput()
     {
-        
         x = Input.GetAxisRaw("Horizontal");
         y = Input.GetAxisRaw("Vertical");
 
-        
+        if (isdashing) { return; } //stop moving if dashing
 
-        if (isdashing) //stop moving if dashing
-        {
-            return;
-        }
-         
-        
         move = new Vector2(x, y).normalized; //normalise diagonal movement
         rb.velocity = new Vector2(move.x * speed, move.y * speed);
 

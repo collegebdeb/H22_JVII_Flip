@@ -8,8 +8,9 @@ public class Battery : MonoBehaviour
     public PlayerMovement Interract; //Activer/Descativer interact
     public HealthBar healthbar;
 
-    public bool CanActivate;
     public bool CanGet;
+    public bool isIn;
+
 
     Animator animator;
 
@@ -26,52 +27,40 @@ public class Battery : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            active();
-        }
+        if(Input.GetKeyDown(KeyCode.E)) { Get(); } //Get Crystal if canget
+        if(!CanGet && isIn) { Interract.CanInterract = false; } //shut down interract if got
+        if(CanGet && isIn) { Interract.CanInterract = true; } //Show Interract
     }
 
     private void OnTriggerEnter2D(Collider2D other) //Si le joueur entre dans le TP
     {
-
-
         if (other.gameObject.name == "Player") //Activer bool pour tp
-        {
-            print("In");
-            
-            Interract.CanInterract = true;
-            CanActivate = true;
+        { activate(); 
+          isIn = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) // Si le joueur quitte le TP
     {
         if (other.gameObject.name == "Player")//Désactiver bool pour tp
-        {
-            print("out");
-            
-            Interract.CanInterract = false;
-            CanActivate = false;
-        }
+        { isIn = false;  }
 
     }
 
-    void active()
+    void activate()
     {
-        if (CanActivate)
-        {
-            animator.SetBool("Activate", true);
-            StartCoroutine(Getit());
-            CanActivate = false;
-        }
+        animator.SetBool("Activate", true);
+        StartCoroutine(Getit());
+    }
+
+    private void Get()
+    {
         if (CanGet)
         {
             animator.SetBool("Get", true);
             healthbar.refill();
             CanGet = false;
         }
-       
     }
 
     IEnumerator Getit()
