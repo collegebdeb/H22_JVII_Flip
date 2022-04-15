@@ -17,8 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject child; //Rotation du viseur
 
     Vector2 move;
-    Vector3 MoveDir;
-    Vector3 MoveDir2;
+    
 
     public Animator animateurJoueur;
 
@@ -27,7 +26,10 @@ public class PlayerMovement : MonoBehaviour
     float dashTimer = 0.1f;
     float CurrentDashTimer;
 
+    Vector3 MoveDir;
+
     public bool isdashing, candash;
+    public bool canbepushed;
 
     public LayerMask Wall; // For check
 
@@ -37,19 +39,16 @@ public class PlayerMovement : MonoBehaviour
         candash = true;
         CurrentDashTimer = dashTimer;
         dashtarget = gameObject.transform.GetChild(1).gameObject;
-        
+        canbepushed = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        MoveDir2 = MoveDir = new Vector3(x, y);
         MoveInput(); // donner vitesse joueur
         Interract(); // Permet d'interragir
         Dash();      // velocity based dash
         raycastDash();
-        // Check for 
-
         if (Input.GetKeyDown(KeyCode.C)) {  print("cast"); }
 
         if (Input.GetKeyDown(KeyCode.Space) && !isdashing && candash)
@@ -75,13 +74,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void raycastDash()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, MoveDir, 3f, Wall);
+        MoveDir = new Vector3(x, y).normalized;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, MoveDir, 1f, Wall);
         if(hit.collider != null)
         {
-            print(hit.collider.name);
+            isdashing = false;
         }
-       
-
     }
 
     public void Dash()
@@ -90,8 +88,8 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = MoveDir * dashspeed;
             CurrentDashTimer -= Time.deltaTime;
+           
         }
-
         if (CurrentDashTimer <= 0)
         {
             CurrentDashTimer = dashTimer;
@@ -101,30 +99,21 @@ public class PlayerMovement : MonoBehaviour
             
         }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Wall")
+        {
+       
+        }
+    }
 
     private IEnumerator CanDashAgain()
     {
         yield return new WaitForSeconds(1f);
         candash = true;
         print("go again");
+        canbepushed = true;
     }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        StopDash(collision);  
-    }
-
-   
-
-    void StopDash(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Wall" || collision.gameObject.name.StartsWith("Ennemy"))
-        {
-            isdashing = false;
-        }
-    }
-
-
 
     void MoveInput()
     {
