@@ -8,13 +8,14 @@ public class Dashparticle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dash = gameObject.GetComponent<PlayerMovement>();
-        dash.isdashing
-    }
+        //    dash = gameObject.GetComponent<PlayerMovement>();
+        //    dash.isdashing
+        // }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // Update is called once per frame
+        // void Update()
+        //{
+
+        //}
     }
 }
