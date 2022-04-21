@@ -14,6 +14,7 @@ public class EnnemyAnim : MonoBehaviour
     public AIPath path;
     public Transform Idleposition;
     public bool vulnerable;
+    public bool comingback; //si le robot est en train de retourner à sa position initiale
 
     float currentposition;
     float lastposition = 0;
@@ -54,10 +55,15 @@ public class EnnemyAnim : MonoBehaviour
         animator.SetBool("ReachedPos", false);
     }
 
+    void shoot()
+    {
+        firescript.ShootArrow();
+    }
+
     void AfterCharge() //Une fois que le robot a finit de charger et de tirer, regarder ou se trouve le joueur pour déterminer son état
     {
         animator.SetBool("Fire", false);
-        firescript.ShootArrow();
+       
 
         if (Vector3.Distance(transform.position, GameManager.Instance.Player.position) == 0)
         {
@@ -106,10 +112,23 @@ void ChangeState() // Change l'état de l'ennemi
                 if (Vector3.Distance(transform.position, Idleposition.position) <= 1f)
                 {
                     animator.SetBool("ReachedPos", true);
+                    comingback = false;
+                }
+                else
+                {
+                    comingback = true;
                 }
                 path.maxSpeed = 4;
                 SetDestination.target = Idleposition.transform;
                 Alerted = false;
+
+                if (comingback && Vector3.Distance(transform.position, GameManager.Instance.Player.position) < range)
+                {
+                    state = State.Chase;
+                }
+
+                
+
                 if (!aggro && Vector3.Distance(transform.position, GameManager.Instance.Player.position) < range)
                 {
                     Alerted = true;
@@ -120,7 +139,7 @@ void ChangeState() // Change l'état de l'ennemi
             case State.Chase:
                 SetDestination.target = GameManager.Instance.Player;  //Player gets targeted
                 path.maxSpeed = 4;
-                if (!aggro && Vector3.Distance(transform.position, GameManager.Instance.Player.position) > range + 3f) //If player out of range
+                if (!aggro && Vector3.Distance(transform.position, GameManager.Instance.Player.position) > range) //If player out of range
                 {
                     print("Not aggro anymore");
                     state = State.Idle;
