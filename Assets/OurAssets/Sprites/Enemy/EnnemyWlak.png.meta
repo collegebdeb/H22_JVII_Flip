@@ -1,37 +1,31 @@
 fileFormatVersion: 2
-guid: 91d23b85a16f1224d806408d34d81e75
+guid: e547285af1f794e4499af6d701eba6d9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8848916572858051820
-    second: enemyWalkRight_0
+      213: 595981920846185544
+    second: EnnemyWlak_0
   - first:
-      213: -2391106941211863406
-    second: enemyWalkRight_1
+      213: -375149354020474249
+    second: EnnemyWlak_1
   - first:
-      213: 7172124880731719860
-    second: enemyWalkRight_2
+      213: -1902199910018115117
+    second: EnnemyWlak_2
   - first:
-      213: -1327845385779078629
-    second: enemyWalkRight_3
+      213: -6146964560479537
+    second: EnnemyWlak_3
   - first:
-      213: -8642952729885186061
-    second: enemyWalkRight_4
+      213: 4609189608860255114
+    second: EnnemyWlak_4
   - first:
-      213: -5387194041481538126
-    second: enemyWalkRight_5
+      213: -6605135546396365593
+    second: EnnemyWlak_5
   - first:
-      213: -2867092815788231367
-    second: enemyWalkRight_6
+      213: 7681729583976098024
+    second: EnnemyWlak_6
   - first:
-      213: -5256313863526077735
-    second: enemyWalkRight_7
-  - first:
-      213: 801115074451920233
-    second: enemyWalkRight_8
-  - first:
-      213: -7805629148610925013
-    second: enemyWalkRight_9
+      213: -5527210507251887946
+    second: EnnemyWlak_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -129,16 +123,76 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Lumin
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: enemyWalkRight_0
+      name: EnnemyWlak_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 40
+        width: 50
         height: 50
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -147,19 +201,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4139ab3b245523580800000000000000
-      internalID: -8848916572858051820
+      spriteID: 844879c366a554800800000000000000
+      internalID: 595981920846185544
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemyWalkRight_1
+      name: EnnemyWlak_1
       rect:
         serializedVersion: 2
-        x: 40
+        x: 50
         y: 0
-        width: 40
+        width: 50
         height: 50
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -168,19 +222,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2969815d7e411ded0800000000000000
-      internalID: -2391106941211863406
+      spriteID: 77274ef66a33bcaf0800000000000000
+      internalID: -375149354020474249
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemyWalkRight_2
+      name: EnnemyWlak_2
       rect:
         serializedVersion: 2
-        x: 80
+        x: 100
         y: 0
-        width: 40
+        width: 50
         height: 50
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -189,19 +243,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b841c85491888360800000000000000
-      internalID: 7172124880731719860
+      spriteID: 3d9179792470a95e0800000000000000
+      internalID: -1902199910018115117
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemyWalkRight_3
+      name: EnnemyWlak_3
       rect:
         serializedVersion: 2
-        x: 120
+        x: 150
         y: 0
-        width: 40
+        width: 50
         height: 50
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -210,40 +264,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1a1ff728ab829de0800000000000000
-      internalID: -1327845385779078629
+      spriteID: fcafce84e592aeff0800000000000000
+      internalID: -6146964560479537
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemyWalkRight_4
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 40
-        height: 50
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3f763b4d8401e0880800000000000000
-      internalID: -8642952729885186061
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: enemyWalkRight_5
+      name: EnnemyWlak_4
       rect:
         serializedVersion: 2
         x: 200
         y: 0
-        width: 40
+        width: 50
         height: 50
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -252,19 +285,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b55465df87dc35b0800000000000000
-      internalID: -5387194041481538126
+      spriteID: a83898a578127ff30800000000000000
+      internalID: 4609189608860255114
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemyWalkRight_6
+      name: EnnemyWlak_5
       rect:
         serializedVersion: 2
-        x: 240
+        x: 250
         y: 0
-        width: 40
+        width: 50
         height: 50
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -273,19 +306,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9353ed8464a0638d0800000000000000
-      internalID: -2867092815788231367
+      spriteID: 7ec2dbf4738d554a0800000000000000
+      internalID: -6605135546396365593
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemyWalkRight_7
+      name: EnnemyWlak_6
       rect:
         serializedVersion: 2
-        x: 280
+        x: 300
         y: 0
-        width: 40
+        width: 50
         height: 50
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -294,19 +327,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9da2198e362dd07b0800000000000000
-      internalID: -5256313863526077735
+      spriteID: 8e821896b5cfa9a60800000000000000
+      internalID: 7681729583976098024
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemyWalkRight_8
+      name: EnnemyWlak_7
       rect:
         serializedVersion: 2
-        x: 320
+        x: 350
         y: 0
-        width: 40
+        width: 50
         height: 50
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -315,29 +348,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 965daec6ae12e1b00800000000000000
-      internalID: 801115074451920233
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: enemyWalkRight_9
-      rect:
-        serializedVersion: 2
-        x: 360
-        y: 0
-        width: 40
-        height: 50
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b2e6c9435a5dca390800000000000000
-      internalID: -7805629148610925013
+      spriteID: 6b0d17cf3576b43b0800000000000000
+      internalID: -5527210507251887946
       vertices: []
       indices: 
       edges: []
