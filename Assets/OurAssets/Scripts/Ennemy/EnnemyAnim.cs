@@ -46,6 +46,7 @@ public class EnnemyAnim : MonoBehaviour
         ChangeState();   //Changer le state
         CheckPosition(); //Pivoter le personnage 
         Alert();         //changer l'alert si le personnage est alerted ou nons
+
     }
 
     void Chase() //partir la chasse quand le joueur est assez proche, fonction appelée dans l'animation
@@ -82,6 +83,15 @@ public class EnnemyAnim : MonoBehaviour
         currentposition = transform.position.x;
         animator.SetFloat("Horizontal", currentposition - lastposition);
         lastposition = currentposition;
+        Vector2 playerdifference = GameManager.Instance.Player.transform.position - transform.position;
+        if (playerdifference.x >= 0 )
+        {
+            animator.SetBool("IsRight", true);
+        }
+        else
+        {
+            animator.SetBool("IsRight", false);
+        }
 
 
     }
