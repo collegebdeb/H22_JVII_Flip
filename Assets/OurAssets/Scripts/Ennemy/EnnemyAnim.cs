@@ -15,6 +15,7 @@ public class EnnemyAnim : MonoBehaviour
     public Transform Idleposition;
     public bool vulnerable;
     public bool comingback; //si le robot est en train de retourner à sa position initiale
+    GameObject obj;
 
     float currentposition;
     float lastposition = 0;
@@ -39,6 +40,8 @@ public class EnnemyAnim : MonoBehaviour
         path = gameObject.GetComponent<AIPath>();
         SetDestination = gameObject.GetComponent<AIDestinationSetter>();
         firescript = gameObject.transform.GetChild(0).GetComponent<ennemyFire>();
+
+        obj = GameManager.Instance.Player.gameObject;
     }
 
     void Update()
@@ -46,7 +49,17 @@ public class EnnemyAnim : MonoBehaviour
         ChangeState();   //Changer le state
         CheckPosition(); //Pivoter le personnage 
         Alert();         //changer l'alert si le personnage est alerted ou nons
+        GoBack();        //retourner IDle quand le joueur est mort
 
+    }
+
+    void GoBack()
+    {
+        GameObject obj = GameManager.Instance.Player.gameObject;
+        if (!obj.activeSelf)
+        {
+            Alerted = false;
+            state = State.Idle;        }
     }
 
     void Chase() //partir la chasse quand le joueur est assez proche, fonction appelée dans l'animation
@@ -139,7 +152,7 @@ void ChangeState() // Change l'état de l'ennemi
 
                 
 
-                if (!aggro && Vector3.Distance(transform.position, GameManager.Instance.Player.position) < range)
+                if (!aggro &&  obj.activeSelf && Vector3.Distance(transform.position, GameManager.Instance.Player.position) < range)
                 {
                     Alerted = true;
                 }

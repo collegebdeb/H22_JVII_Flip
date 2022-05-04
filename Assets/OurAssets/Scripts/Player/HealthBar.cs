@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 public class HealthBar : MonoBehaviour
 {
     public Animator animator;
+    public RespawnManager Res;
     int hitpoints;
     // Start is called before the first frame update
     void Start()
     {
         hitpoints = 0;
+        Res = GameObject.Find("---Player---").GetComponent<RespawnManager>();
     }
 
     // Update is called once per frame
@@ -35,7 +37,10 @@ public class HealthBar : MonoBehaviour
 
             if (hitpoints == -1)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                //gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                StartCoroutine(Res.Die());
+                gameObject.SetActive(false);
+                
             }
         }
     }
@@ -47,5 +52,8 @@ public class HealthBar : MonoBehaviour
         hitpoints++;
         print(hitpoints);
     }
+
+
+
 
 }

@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
         candash = true;
         CurrentDashTimer = dashTimer;
         dashtarget = gameObject.transform.GetChild(1).gameObject;
+        stairOffset = 2.5f;
     }
 
     // Update is called once per frame
@@ -48,8 +49,7 @@ public class PlayerMovement : MonoBehaviour
     {
         MoveInput(); // donner vitesse joueur
         Interract(); // Permet d'interragir
-        Dash();      // velocity based dash
-        print(MoveDir);
+        Dash();      // velocity based 
         raycastDash();
         if (Input.GetKeyDown(KeyCode.C)) { print("cast"); }
         MoveDir = new Vector3(x, y);
