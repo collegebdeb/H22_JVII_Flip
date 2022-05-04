@@ -31,7 +31,6 @@ public class ShieldScript : MonoBehaviour
             elapsedTime += Time.deltaTime;
             float newAlpha = Mathf.Lerp(startValue, endValue, elapsedTime / duration);
             SSr.color = new Color(SSr.color.r, SSr.color.g, SSr.color.b, newAlpha);
-            print(SSr.color.a);
             yield return null;
         }
     }
