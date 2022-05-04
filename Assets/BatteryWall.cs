@@ -10,34 +10,20 @@ public class BatteryWall : MonoBehaviour
     bool active;
 
     public Transform targetpos;
+    public BoxCollider2D collider2d;
 
-    Vector3 startposition, endposition;
     Vector3 velocity = new Vector3(0, 0, 0);
-    Transform Bpos;
 
     [Range(0, 100)] public float lerpspeed;
 
     // Start is called before the first frame update
     void Start()
     {
+        collider2d = transform.parent.gameObject.GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
-    void Update()
-    {
-     /*   if(Input.GetKeyDown(KeyCode.E))
-        {
-            active = true;
-        }
-        if(active)
-        {   //TimeElapsed += Time.deltaTime;
-            //percentage = TimeElapsed / duration;
-            //batterywall.transform.position = Vector3.Lerp(startposition, endposition, percentage) ;
-            batterywall.transform.position = Vector3.SmoothDamp(startposition, targetpos.position, ref velocity, Time.deltaTime * lerpspeed);
-           
 
-        }*/
-    }
 
     private void FixedUpdate()
     {
@@ -49,6 +35,11 @@ public class BatteryWall : MonoBehaviour
         if (active)
         {
             batterywall.transform.position = Vector3.SmoothDamp(batterywall.transform.position,targetpos.position , ref velocity, Time.deltaTime * lerpspeed);
+        }
+
+        if(batterywall.transform.position.y <= targetpos.position.y + 0.25f)
+        {
+            collider2d.enabled = false;
         }
     }
 }
