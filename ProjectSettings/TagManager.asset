@@ -9,6 +9,7 @@ TagManager:
   - Ennemy
   - Bullet 1
   - Bullet
+  - stairs
   layers:
   - Default
   - TransparentFX

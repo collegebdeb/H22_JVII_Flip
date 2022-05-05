@@ -102,11 +102,19 @@ public class PlayerMovement : MonoBehaviour
 
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.collider.tag == "Wall")
+        if (collision.tag == "stairs")
         {
-
+            onstairs = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "stairs")
+        {
+            onstairs = false;
         }
     }
 
@@ -130,7 +138,9 @@ public class PlayerMovement : MonoBehaviour
 
         if(onstairs && move.x != 0)
         {
-            rb.velocity = new Vector2(move.x * speed, move.y * speed) + new Vector2(0, stairOffset);
+            if(move.x > 0) { stairOffset = -3.5f; } else { stairOffset = 2.5f; }
+            rb.velocity = new Vector2(move.x * speed, move.y * speed) +  new Vector2(0, stairOffset);
+            
         }
         else
         {
