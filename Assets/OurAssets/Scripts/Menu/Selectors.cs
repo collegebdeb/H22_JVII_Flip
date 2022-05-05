@@ -1,32 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Selectors : MonoBehaviour
 {
-    public GameObject[] logs = new GameObject[4];
+    //public GameObject[] logs = new GameObject[4];
+    
+    public ReadTextFile rd;
+    public List<GameObject> logs = new List<GameObject>();
+
+    public Text Logtext;
     public int selected = 0;
+    public bool isReading;
+
+    public GameObject canvas;
 
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < logs.Length; i++)
+        canvas = GameObject.Find("LogText");
+        Logtext = GameObject.Find("LogDisplay").GetComponent<Text>();
+        rd = gameObject.GetComponent<ReadTextFile>();
+
+        canvas.SetActive(false);
+
+
+        for(int i = 0; i < 10; i++)
         {
             logs[i] = GameObject.Find("log" + i);
+            //logs.Add(GameObject.Find("log" + i));
+            
             if (i >0)
             {
                 deactivateStart(i);
             }
            
         }
-
-        
-
     }
 
     // Update is called once per frame
     void Update()
     {
+       
+        
+
         if(Input.GetKeyDown(KeyCode.DownArrow))
         {
             if (selected < 4)
@@ -54,8 +72,13 @@ public class Selectors : MonoBehaviour
                 print("cant");
             }
         }
-        if(Input.GetKeyDown(KeyCode.KeypadEnter))
-        { }
+        if(Input.GetKeyDown(KeyCode.Return) && !isReading)
+        {
+            print("fuckeverything");
+            isReading = true;
+            canvas.SetActive(true);
+            Logtext.text = rd.names[selected];
+        }
         
     }
     void activate(int i)
