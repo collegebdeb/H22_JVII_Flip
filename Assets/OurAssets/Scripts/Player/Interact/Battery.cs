@@ -10,7 +10,7 @@ public class Battery : MonoBehaviour
 
     public bool CanGet;
     public bool isIn;
-
+    public bool got;
 
     Animator animator;
 
@@ -60,6 +60,7 @@ public class Battery : MonoBehaviour
             animator.SetBool("Get", true);
             healthbar.refill();
             CanGet = false;
+            got = true;
         }
     }
 
