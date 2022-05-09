@@ -7,6 +7,7 @@ public class Logs : MonoBehaviour
 {
     public PlayerMovement playerMovement;
     public InteractManager inter;
+    public Selectors selector;
     bool interact;
     
     // Start is called before the first frame update
@@ -48,8 +49,9 @@ public class Logs : MonoBehaviour
 
     void get()
     {
+        selector.currentLogCount++;
+        inter.on = true;
         
-        StartCoroutine(inter.closetext());
     }
    
            

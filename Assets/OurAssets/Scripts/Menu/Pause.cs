@@ -7,6 +7,9 @@ public class Pause : MonoBehaviour
 {
     public GameObject PauseCanvas;
     public GameObject LogMenu;
+
+    public Selectors selector;
+
     public bool pause;
     public bool logmenu;
     
@@ -62,6 +65,7 @@ public class Pause : MonoBehaviour
         LogMenu.SetActive(true);
         PauseCanvas.SetActive(false);
         logmenu = true;
+        selector.check = true;
     }
 
     public void paused()

@@ -10,13 +10,17 @@ public class Selectors : MonoBehaviour
     public ReadTextFile rd;
     public List<GameObject> logs = new List<GameObject>();
     public Pause pausemenu;
-    
+
+    public bool check;
 
     public Text Logtext;
     public int selected = 0;
     public bool isReading;
 
     public GameObject canvas;
+
+
+    public int currentLogCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -39,18 +43,33 @@ public class Selectors : MonoBehaviour
             }
            
         }
+
+        for(int i = 1; i < 5; i++)
+        {
+            logs[i].SetActive(false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(check)
+        {
+            checkForActiveLogs();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Y))
+        {
+            print("on");
+            checkForActiveLogs();
+        }
        
         
         if(!isReading)
         {
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                if (selected < 4)
+                if (selected < currentLogCount)
                 {
                     deactivate(selected);
                     selected++;
@@ -114,5 +133,14 @@ public class Selectors : MonoBehaviour
     void deactivateStart(int i)
     {
         logs[i].gameObject.transform.GetChild(0).gameObject.SetActive(false);
+    }
+
+    public void checkForActiveLogs()
+    {
+        for(int i = 0; i <= currentLogCount; i++)
+        {
+            logs[i].SetActive(true);
+        }
+        check = false;
     }
 }
