@@ -9,6 +9,8 @@ public class Selectors : MonoBehaviour
     
     public ReadTextFile rd;
     public List<GameObject> logs = new List<GameObject>();
+    public Pause pausemenu;
+    
 
     public Text Logtext;
     public int selected = 0;
@@ -26,10 +28,10 @@ public class Selectors : MonoBehaviour
         canvas.SetActive(false);
 
 
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < 5; i++)
         {
             logs[i] = GameObject.Find("log" + i);
-            //logs.Add(GameObject.Find("log" + i));
+            
             
             if (i >0)
             {
@@ -44,40 +46,50 @@ public class Selectors : MonoBehaviour
     {
        
         
+        if(!isReading)
+        {
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                if (selected < 4)
+                {
+                    deactivate(selected);
+                    selected++;
+                    activate(selected);
+                }
+                else
+                {
+                    print("cant");
+                }
 
-        if(Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            if (selected < 4)
-            {
-                deactivate(selected);
-                selected++;
-                activate(selected);
             }
-            else
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                print("cant");
-            }
-        
-        }
-        if(Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            if (selected > 0)
-            {
-                deactivate(selected);
-                selected--;
-                activate(selected);
-            }
-            else
-            {
-                print("cant");
+                if (selected > 0)
+                {
+                    deactivate(selected);
+                    selected--;
+                    activate(selected);
+                }
+                else
+                {
+                    print("cant");
+                }
             }
         }
+     
         if(Input.GetKeyDown(KeyCode.Return) && !isReading)
         {
             print("fuckeverything");
             isReading = true;
             canvas.SetActive(true);
             Logtext.text = rd.names[selected];
+            pausemenu.logmenu = true;
+        }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            isReading = false;
+            canvas.SetActive(false);
         }
         
     }
