@@ -16,18 +16,18 @@ public class InteractManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (on)
+        if (Input.GetKeyDown(KeyCode.U))
         {
             StartCoroutine(closetext());
         }
-
     }
 
     public IEnumerator closetext()
     {
         on = false;
         text.SetActive(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
+        print("what is going in");
         text.SetActive(false);
     }
 }
