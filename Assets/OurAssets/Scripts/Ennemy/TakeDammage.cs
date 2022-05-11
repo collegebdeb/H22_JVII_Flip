@@ -6,35 +6,51 @@ public class TakeDammage : MonoBehaviour
 {
     public int healthcount;
     Transform healthbar;
+    GameObject bar;
     public EnnemyAnim anim;
     public ShieldScript shieldscript;
+    Animator Ennemy;
+
+    bool dead;
 
     // Start is called before the first frame update
     void Start()
     {
+        bar = gameObject.transform.GetChild(1).gameObject;
         healthbar = transform.GetChild(1);
         anim = GetComponentInParent<EnnemyAnim>();
         shieldscript = gameObject.transform.GetChild(2).gameObject.GetComponent<ShieldScript>();
+
+        Ennemy = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (healthcount == 3)
+        {
+            Ennemy.SetBool("dead", true);
+            dead = true;
+            StartCoroutine(destroyHB());
+        }
     }
 
    
 
     public void hit()
     {
-        if (anim.vulnerable)
+        if (anim.vulnerable && !dead)
         {
+          
             Animator animator;
             print("hit!");
             animator = healthbar.GetChild(healthcount).GetComponent<Animator>();
             animator.SetBool("TookDammage", true);
+           
             healthcount++;
-            destroyed();
+
+           
+            //destroyed();
         }
         else
         {
@@ -46,11 +62,17 @@ public class TakeDammage : MonoBehaviour
 
     void destroyed()
     {
-        if(healthcount == 3)
-        {
-            Destroy(this.gameObject);
-        }
+        
+        Destroy(gameObject);
     }
+
+    IEnumerator destroyHB()
+    {
+        print("Is dying");
+        yield return new WaitForSeconds(0.5f);
+        Destroy(bar);
+    }
+    
 
    
 }
