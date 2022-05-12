@@ -29,7 +29,7 @@ public class InteractManager : MonoBehaviour
         on = false;
         hasntreadyet = true;
         text.SetActive(true);
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2f);
         print("what is going in");
         text.SetActive(false);
     }
