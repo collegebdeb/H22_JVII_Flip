@@ -11,11 +11,19 @@ public class TakeDammage : MonoBehaviour
     public ShieldScript shieldscript;
     Animator Ennemy;
 
+    public DropLog log;
+
     bool dead;
 
     // Start is called before the first frame update
     void Start()
     {
+        if(gameObject.GetComponent<DropLog>() != null)
+        {
+            log = gameObject.GetComponent<DropLog>();
+        }
+       
+
         bar = gameObject.transform.GetChild(1).gameObject;
         healthbar = transform.GetChild(1);
         anim = GetComponentInParent<EnnemyAnim>();
@@ -62,14 +70,17 @@ public class TakeDammage : MonoBehaviour
 
     void destroyed()
     {
-        
+        if(log != null)
+        {
+            log.DropaLog();
+        }
         Destroy(gameObject);
     }
 
     IEnumerator destroyHB()
     {
         print("Is dying");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.4f);
         Destroy(bar);
     }
     

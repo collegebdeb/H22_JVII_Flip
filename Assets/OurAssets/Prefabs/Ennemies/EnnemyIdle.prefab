@@ -572,6 +572,7 @@ MonoBehaviour:
   healthcount: 0
   anim: {fileID: 0}
   shieldscript: {fileID: 0}
+  log: {fileID: 0}
 --- !u!114 &3688092889608570347
 MonoBehaviour:
   m_ObjectHideFlags: 0

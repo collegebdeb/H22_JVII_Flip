@@ -6,6 +6,7 @@ public class InteractManager : MonoBehaviour
 {
     public GameObject text;
     public bool on;
+    bool hasntreadyet;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,7 @@ public class InteractManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.U))
+        if (on && !hasntreadyet)
         {
             StartCoroutine(closetext());
         }
@@ -24,7 +25,9 @@ public class InteractManager : MonoBehaviour
 
     public IEnumerator closetext()
     {
+        print("woop");
         on = false;
+        hasntreadyet = true;
         text.SetActive(true);
         yield return new WaitForSeconds(4f);
         print("what is going in");
