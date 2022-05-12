@@ -50,7 +50,6 @@ public class EnnemyAnim : MonoBehaviour
         CheckPosition(); //Pivoter le personnage 
         Alert();         //changer l'alert si le personnage est alerted ou nons
         GoBack();        //retourner IDle quand le joueur est mort
-
     }
 
     void GoBack()

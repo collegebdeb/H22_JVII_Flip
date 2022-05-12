@@ -11,6 +11,8 @@ public class TakeDammage : MonoBehaviour
     public ShieldScript shieldscript;
     Animator Ennemy;
 
+    Vector3 deadposition;
+
     public DropLog log;
 
     bool dead;
@@ -40,6 +42,7 @@ public class TakeDammage : MonoBehaviour
             Ennemy.SetBool("dead", true);
             dead = true;
             StartCoroutine(destroyHB());
+
         }
     }
 
@@ -54,9 +57,11 @@ public class TakeDammage : MonoBehaviour
             print("hit!");
             animator = healthbar.GetChild(healthcount).GetComponent<Animator>();
             animator.SetBool("TookDammage", true);
-           
+            
             healthcount++;
 
+            deadposition = transform.position;
+            print(deadposition);
            
             //destroyed();
         }
@@ -72,7 +77,7 @@ public class TakeDammage : MonoBehaviour
     {
         if(log != null)
         {
-            log.DropaLog();
+            log.DropaLog(deadposition);
         }
         Destroy(gameObject);
     }
