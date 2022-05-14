@@ -13,13 +13,13 @@ public class RespawnManager : MonoBehaviour
     {
         if(on && !isrunning)
         {
-            print("lesgo");
+           
             StartCoroutine(Die2());
         }
     }
     public IEnumerator Die()
     {
-        print("started");
+        
          on = true;
      
         yield return new WaitForSeconds(3);
@@ -28,11 +28,9 @@ public class RespawnManager : MonoBehaviour
 
     public IEnumerator Die2()
     {
-        print("fuck");
         isrunning = true;
         yield return new WaitForSeconds(3);
         isrunning = false;
-        print("off");
         death();
 
     }

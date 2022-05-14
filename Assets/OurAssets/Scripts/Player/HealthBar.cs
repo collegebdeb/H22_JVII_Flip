@@ -31,7 +31,7 @@ public class HealthBar : MonoBehaviour
             animator.SetBool("Refill", false);
            
             hitpoints--;
-            print(hitpoints);
+            
 
             Destroy(collision.gameObject);
 

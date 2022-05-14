@@ -122,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         candash = true;
-        print("go again");
+        //print("go again");
         canbepushed = true;
     }
 
