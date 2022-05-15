@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: leaf5_bottom_8
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -5398578499917641431, guid: b11e4592c16166d4a9fa94fce72d65bb, type: 3}
+  m_Sprite: {fileID: -5398578499917641431, guid: b88913faaa33b994e844ab98e9820f28, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
