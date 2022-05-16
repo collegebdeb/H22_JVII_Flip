@@ -103,20 +103,23 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "stairs")
         {
             onstairs = true;
         }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "stairs")
+        else
         {
             onstairs = false;
         }
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+       // onstairs = false;
+    }
+
+
 
     private IEnumerator CanDashAgain()
     {

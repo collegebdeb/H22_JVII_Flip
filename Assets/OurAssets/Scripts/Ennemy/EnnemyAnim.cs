@@ -163,7 +163,7 @@ void ChangeState() // Change l'état de l'ennemi
                 path.maxSpeed = 4;
                 if (!aggro && Vector3.Distance(transform.position, GameManager.Instance.Player.position) > range) //If player out of range
                 {
-                    print("Not aggro anymore");
+                    //print("Not aggro anymore");
                     state = State.Idle;
                 }
                 if(Vector3.Distance(transform.position,GameManager.Instance.Player.position) <= 5)

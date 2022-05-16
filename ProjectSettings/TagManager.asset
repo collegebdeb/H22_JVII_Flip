@@ -47,3 +47,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Sorter
+    uniqueID: 3996063271
+    locked: 0
