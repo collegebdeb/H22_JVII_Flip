@@ -109,14 +109,11 @@ public class PlayerMovement : MonoBehaviour
         {
             onstairs = true;
         }
-        else
-        {
-            onstairs = false;
-        }
+
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-       // onstairs = false;
+        onstairs = false;
     }
 
 
