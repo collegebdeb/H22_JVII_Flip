@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class Selectors : MonoBehaviour
@@ -13,7 +14,8 @@ public class Selectors : MonoBehaviour
 
     public bool check;
 
-    public Text Logtext;
+    public TextMeshProUGUI Logtext;
+
     public int selected = 0;
     public bool isReading;
 
@@ -26,7 +28,7 @@ public class Selectors : MonoBehaviour
     void Start()
     {
         canvas = GameObject.Find("LogText");
-        Logtext = GameObject.Find("LogDisplay").GetComponent<Text>();
+        //Logtext = GameObject.Find("LogDisplay").GetComponent<TextMeshPro>();
         rd = gameObject.GetComponent<ReadTextFile>();
 
         canvas.SetActive(false);

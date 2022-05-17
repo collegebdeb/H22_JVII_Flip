@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
 {
     public GameObject PauseCanvas;
     public GameObject LogMenu;
-
+   
     public Selectors selector;
+    public SortingGroup sort;
+
+    public int sorter;
 
     public bool pause;
     public bool logmenu;
@@ -16,12 +20,23 @@ public class Pause : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      
+        sort = GameManager.Instance.Player.GetComponent<SortingGroup>();
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(logmenu || pause)
+        {
+            sort.sortingOrder = 4;
+        }
+        else
+        {
+            sort.sortingOrder = 0;
+        }
+
         paused();
 
         if(Input.GetKeyDown(KeyCode.Escape))
@@ -30,12 +45,19 @@ public class Pause : MonoBehaviour
             {
                 pause = true;
                 PauseCanvas.SetActive(true);
+                logmenu = false;
             }
             else
             {
                 if (!logmenu && pause)
                 {
                     pause = false;
+                }
+                else if(logmenu && !selector.isReading && pause)
+                {
+                    logmenu = false;
+                    LogMenu.SetActive(false);
+                    PauseCanvas.SetActive(true);
                 }
                 else
                 {
@@ -66,6 +88,7 @@ public class Pause : MonoBehaviour
         PauseCanvas.SetActive(false);
         logmenu = true;
         selector.check = true;
+        
     }
 
     public void paused()
