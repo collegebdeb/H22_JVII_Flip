@@ -6,6 +6,8 @@ public class InteractManager : MonoBehaviour
 {
     public GameObject text;
     public bool on;
+    public bool sound;
+    public AudioSource source;
     bool hasntreadyet;
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,18 @@ public class InteractManager : MonoBehaviour
         {
             StartCoroutine(closetext());
         }
+
+        if(sound)
+        {
+            Playsound();
+        }
+
+    }
+
+    public void Playsound()
+    {
+        sound = false;
+        source.Play();
     }
 
     public IEnumerator closetext()
