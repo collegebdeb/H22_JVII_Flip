@@ -25,12 +25,10 @@ public class InteractManager : MonoBehaviour
 
     public IEnumerator closetext()
     {
-        print("woop");
         on = false;
         hasntreadyet = true;
         text.SetActive(true);
         yield return new WaitForSeconds(2f);
-        print("what is going in");
         text.SetActive(false);
     }
 }

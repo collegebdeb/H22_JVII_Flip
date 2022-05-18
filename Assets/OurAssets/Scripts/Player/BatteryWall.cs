@@ -8,12 +8,14 @@ public class BatteryWall : MonoBehaviour
     private float duration = 1.5f, TimeElapsed,percentage;
 
     public bool active;
+    public bool closing;
 
     public Transform targetpos;
     public BoxCollider2D collider2d;
     
 
     Vector3 velocity = new Vector3(0, 0, 0);
+    Vector3 starpos;
 
     public float lerpspeed;
 
@@ -22,6 +24,7 @@ public class BatteryWall : MonoBehaviour
     {
         collider2d = transform.parent.gameObject.GetComponent<BoxCollider2D>();
         active = false;
+        starpos = transform.position;
     }
 
     // Update is called once per frame
@@ -31,12 +34,35 @@ public class BatteryWall : MonoBehaviour
     {
         if (active)
         {
-            batterywall.transform.position = Vector3.SmoothDamp(batterywall.transform.position,targetpos.position , ref velocity, Time.deltaTime * lerpspeed);
+            open();
+        }
+
+        if (closing)
+        {
+            close();
         }
 
         if(batterywall.transform.position.y <= targetpos.position.y + 0.25f)
         {
             collider2d.enabled = false;
         }
+        else
+        {
+            collider2d.enabled = true;
+        }
+    }
+
+    public void open()
+    {
+        batterywall.transform.position = Vector3.SmoothDamp(batterywall.transform.position, targetpos.position, ref velocity, Time.deltaTime * lerpspeed);
+        if(batterywall.transform.position.y == targetpos.position.y)
+        {
+            active = false;
+        }
+    }
+    public void close()
+    {
+        batterywall.transform.position = Vector3.SmoothDamp(batterywall.transform.position, starpos, ref velocity, Time.deltaTime * lerpspeed);
+
     }
 }

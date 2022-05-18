@@ -7,6 +7,7 @@ public class HealthBar : MonoBehaviour
 {
     public Animator animator;
     public RespawnManager Res;
+    public ParticleSystem particle;
     int hitpoints;
     // Start is called before the first frame update
     void Start()
@@ -39,6 +40,7 @@ public class HealthBar : MonoBehaviour
             {
                 //gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 StartCoroutine(Res.Die());
+                particle.Play();
                 gameObject.SetActive(false);
                 
             }

@@ -11,6 +11,8 @@ public class TakeDammage : MonoBehaviour
     public ShieldScript shieldscript;
     Animator Ennemy;
 
+    public AttackAudioScript audio;
+
     Vector3 deadposition;
 
     public DropLog log;
@@ -52,7 +54,7 @@ public class TakeDammage : MonoBehaviour
     {
         if (anim.vulnerable && !dead)
         {
-          
+            audio.HitSound();
             Animator animator;
             print("hit!");
             animator = healthbar.GetChild(healthcount).GetComponent<Animator>();
@@ -68,6 +70,7 @@ public class TakeDammage : MonoBehaviour
         else
         {
             StartCoroutine(shieldscript.SpriteFade(0, 0.5f)); // Faire apparaître le bouclier
+            audio.ShieldSound();
         }
       
       

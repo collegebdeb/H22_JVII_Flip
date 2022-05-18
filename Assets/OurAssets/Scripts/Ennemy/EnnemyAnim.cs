@@ -65,6 +65,7 @@ public class EnnemyAnim : MonoBehaviour
     {
         vulnerable = false;
         state = State.Chase;
+        animator.SetBool("fire", false);
         animator.SetBool("ReachedPos", false);
     }
 
@@ -166,7 +167,7 @@ void ChangeState() // Change l'état de l'ennemi
                     //print("Not aggro anymore");
                     state = State.Idle;
                 }
-                if(Vector3.Distance(transform.position,GameManager.Instance.Player.position) <= 5)
+                if(Vector3.Distance(transform.position,GameManager.Instance.Player.position) <= 6)
                 {
                     state = State.Fire;
                 }
