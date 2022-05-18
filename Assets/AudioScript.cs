@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AudioScript : MonoBehaviour
 {
-    public AudioSource source;
+    public AudioSource PlayerHit;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,4 +19,9 @@ public class AudioScript : MonoBehaviour
             //source.Play();
         }
     }
+    public void PlayerHitSound()
+    {
+        PlayerHit.Play();
+    }
+    
 }

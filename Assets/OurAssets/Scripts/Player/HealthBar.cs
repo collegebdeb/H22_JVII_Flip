@@ -8,6 +8,9 @@ public class HealthBar : MonoBehaviour
     public Animator animator;
     public RespawnManager Res;
     public ParticleSystem particle;
+
+    public AudioScript audio;
+
     int hitpoints;
     // Start is called before the first frame update
     void Start()
@@ -27,6 +30,7 @@ public class HealthBar : MonoBehaviour
         if (collision.gameObject.name.StartsWith("Bullet"))
         {
             collision.gameObject.name = "";
+            audio.PlayerHitSound();
     
             animator.SetBool("TookDammage", true);
             animator.SetBool("Refill", false);

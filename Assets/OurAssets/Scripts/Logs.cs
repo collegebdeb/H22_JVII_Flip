@@ -56,6 +56,7 @@ public class Logs : MonoBehaviour
     {
         selector.currentLogCount++;
         inter.on = true;
+        inter.sound = true;
         
     }
    
