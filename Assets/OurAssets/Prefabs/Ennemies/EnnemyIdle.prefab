@@ -598,7 +598,7 @@ MonoBehaviour:
   aggro: 0
   Alerted: 0
   Player: {fileID: 0}
-  range: 10
+  range: 12
   SetDestination: {fileID: 3688092889608570344}
   path: {fileID: 3688092889608570345}
   Idleposition: {fileID: 3688092888165963057}
