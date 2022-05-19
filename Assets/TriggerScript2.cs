@@ -25,10 +25,7 @@ public class TriggerScript2 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.name == "Player")
-        {
-            battery.active = true;
-        }
+        
 
         if(collision.gameObject.name == "Player" && playerDifference > 0)
         {

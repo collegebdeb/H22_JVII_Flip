@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class HealthBar : MonoBehaviour
 {
-    public Animator animator;
+    public Animator[] animator = new Animator[3];
     public RespawnManager Res;
     public ParticleSystem particle;
 
-    public AudioScript audio;
+    public int CurrentHealth, Maxhealth;
+    
 
     int hitpoints;
     // Start is called before the first frame update
@@ -30,10 +31,10 @@ public class HealthBar : MonoBehaviour
         if (collision.gameObject.name.StartsWith("Bullet"))
         {
             collision.gameObject.name = "";
-            audio.PlayerHitSound();
+            
     
-            animator.SetBool("TookDammage", true);
-            animator.SetBool("Refill", false);
+            animator[CurrentHealth].SetBool("TookDammage", true);
+            animator[CurrentHealth].SetBool("Refill", false);
            
             hitpoints--;
             
@@ -53,9 +54,14 @@ public class HealthBar : MonoBehaviour
 
     public void refill() //Regenerate, change to add new healthbar upon battery
     {
-        animator.SetBool("Refill", true);
-        animator.SetBool("TookDammage", false);
-        hitpoints++;
+        for(int i = 0; i < Maxhealth; i++)
+        {
+            animator[i].SetBool("Refill", true);
+            animator[i].SetBool("TookDammage", false);
+            
+        }
+        
+        hitpoints = Maxhealth;
         print(hitpoints);
     }
 

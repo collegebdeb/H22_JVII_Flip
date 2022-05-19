@@ -28,10 +28,6 @@ public class Battery : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E) && isIn) { Get(); 
-        } //Get Crystal if canget
-        if(!CanGet && isIn) { Interract.CanInterract = false; } //shut down interract if got
-        if(CanGet && isIn) { Interract.CanInterract = true; } //Show Interract
         
     }
 
@@ -43,12 +39,23 @@ public class Battery : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other) // Si le joueur quitte le TP
-    {
-        if (other.gameObject.name == "Player")//Désactiver bool pour tp
-        { isIn = false;  }
-        Interract.CanInterract = false;
+   
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            if (!got && CanGet)
+            {
+                Interract.CanInterract = true;
+            }
+            if (Input.GetKeyDown(KeyCode.E) && !got)
+            {
+                Get();
+                Interract.CanInterract = false;
+            }
+
+        }
     }
 
     void activate()
@@ -62,8 +69,10 @@ public class Battery : MonoBehaviour
         if (CanGet)
         {
             animator.SetBool("Get", true);
+            healthbar.Maxhealth++;
             healthbar.refill();
             BatterySound.Play();
+
             CanGet = false;
             got = true;
         }
@@ -72,6 +81,6 @@ public class Battery : MonoBehaviour
     IEnumerator Getit()
     {
         yield return new WaitForSeconds(2);
-        CanGet = true;
+        this.CanGet = true;
     }
 }

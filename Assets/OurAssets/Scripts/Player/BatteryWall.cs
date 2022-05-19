@@ -10,6 +10,8 @@ public class BatteryWall : MonoBehaviour
     public bool active;
     public bool closing;
 
+    public int batteryCount,BatCharge;
+
     public Transform targetpos;
     public BoxCollider2D collider2d;
     
@@ -40,6 +42,11 @@ public class BatteryWall : MonoBehaviour
         if (closing)
         {
             close();
+        }
+
+        if(batteryCount == BatCharge)
+        {
+            active = true; 
         }
 
         if(batterywall.transform.position.y <= targetpos.position.y + 0.25f)
