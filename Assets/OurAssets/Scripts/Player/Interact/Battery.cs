@@ -28,7 +28,15 @@ public class Battery : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+     if(isIn && CanGet)
+        {
+            Interract.CanInterract = true;
+        }
+        if (Input.GetKeyDown(KeyCode.E) && !got)
+        {
+            Get();
+            Interract.CanInterract = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other) //Si le joueur entre dans le TP
@@ -39,21 +47,24 @@ public class Battery : MonoBehaviour
         }
     }
 
-   
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Player") //Activer bool pour tp
+        {
+            
+            isIn = false;
+        }
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            if (!got && CanGet)
+            if (!got )
             {
-                Interract.CanInterract = true;
+                isIn = true;
             }
-            if (Input.GetKeyDown(KeyCode.E) && !got)
-            {
-                Get();
-                Interract.CanInterract = false;
-            }
+            
 
         }
     }
