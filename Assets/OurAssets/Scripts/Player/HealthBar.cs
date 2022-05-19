@@ -37,7 +37,7 @@ public class HealthBar : MonoBehaviour
             animator[CurrentHealth].SetBool("Refill", false);
            
             hitpoints--;
-            
+            CurrentHealth++;
 
             Destroy(collision.gameObject);
 
@@ -60,7 +60,7 @@ public class HealthBar : MonoBehaviour
             animator[i].SetBool("TookDammage", false);
             
         }
-        
+        CurrentHealth = 0;
         hitpoints = Maxhealth;
         print(hitpoints);
     }
