@@ -34,7 +34,7 @@ public class Selectors : MonoBehaviour
         canvas.SetActive(false);
 
 
-        for(int i = 0; i < 5; i++)
+        for(int i = 0; i < 7; i++)
         {
             logs[i] = GameObject.Find("log" + i);
             
@@ -46,7 +46,7 @@ public class Selectors : MonoBehaviour
            
         }
 
-        for(int i = 1; i < 5; i++)
+        for(int i = 1; i < 7; i++)
         {
             logs[i].SetActive(false);
         }
