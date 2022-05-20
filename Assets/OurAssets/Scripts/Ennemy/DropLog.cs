@@ -9,7 +9,7 @@ public class DropLog : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-     
+        target = this.transform;
     }
 
     // Update is called once per frame

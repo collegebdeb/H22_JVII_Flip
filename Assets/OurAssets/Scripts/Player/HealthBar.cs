@@ -9,6 +9,7 @@ public class HealthBar : MonoBehaviour
     public RespawnManager Res;
     public ParticleSystem particle;
 
+
     public int CurrentHealth, Maxhealth;
     
 
@@ -18,6 +19,7 @@ public class HealthBar : MonoBehaviour
     {
         hitpoints = 0;
         Res = GameObject.Find("---Player---").GetComponent<RespawnManager>();
+     
     }
 
     // Update is called once per frame
@@ -65,6 +67,7 @@ public class HealthBar : MonoBehaviour
         print(hitpoints);
     }
 
+    
 
 
 

@@ -20,7 +20,8 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 move;
 
-
+    public SpriteRenderer rd;
+    public Material original, Flash;
     public Animator animateurJoueur;
 
     //DASH
@@ -42,6 +43,8 @@ public class PlayerMovement : MonoBehaviour
         CurrentDashTimer = dashTimer;
         dashtarget = gameObject.transform.GetChild(1).gameObject;
         stairOffset = 2.5f;
+        rd = GetComponent<SpriteRenderer>();
+        original = rd.material;
     }
 
     // Update is called once per frame
@@ -122,6 +125,7 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         candash = true;
+        StartCoroutine(SpriteFlash());
         //print("go again");
         canbepushed = true;
     }
@@ -153,6 +157,13 @@ public class PlayerMovement : MonoBehaviour
         animateurJoueur.SetFloat("mouvementHorizontale", move.x);
         animateurJoueur.SetFloat("mouvementVerticale", move.y);
         animateurJoueur.SetFloat("joueurVitesse", move.sqrMagnitude);
+    }
+
+    public IEnumerator SpriteFlash()
+    {
+        rd.material = Flash;
+        yield return new WaitForSeconds(0.1f);
+        rd.material = original;
     }
 
 }

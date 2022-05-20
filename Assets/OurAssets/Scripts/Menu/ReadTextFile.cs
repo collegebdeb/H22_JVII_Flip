@@ -23,6 +23,6 @@ public class ReadTextFile : MonoBehaviour
 
     void ReadTextAssets()
     {
-        names = textAssetsName.text.Split(new string[] {",", "\n" }, StringSplitOptions.None);
+        names = textAssetsName.text.Split(new string[] {"<" }, StringSplitOptions.None);
     }
 }

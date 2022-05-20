@@ -7,6 +7,7 @@ public class TeleportManager : MonoBehaviour
 {
     public Transform[] TpPos = new Transform[20];
     public Transform TpDestination;
+    int index;
 
     public GameObject[] Teleporters = new GameObject[20];
     public bool CanTp;
@@ -57,15 +58,16 @@ public class TeleportManager : MonoBehaviour
 
     void FileTeleportation() //Entrer tout les positions des points de téléportation sur la map
     {
-        for (int i = 2; i < TpPos.Length; i++)
+        for (int i = 0; i < TpPos.Length; i++)
         {
             TpPos[i] = GameObject.Find("TpPos" + i).transform;
+
             if(TpPos[i] == null)
             {
                 break;
             }
         }
-        for (int i = 2; i < Teleporters.Length; i++)
+        for (int i = 0; i < Teleporters.Length; i++)
         {
             Teleporters[i] = GameObject.Find("Teleporter" + i);
             if(Teleporters[i] == null)
