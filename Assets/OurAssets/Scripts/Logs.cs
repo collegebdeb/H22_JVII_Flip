@@ -16,7 +16,8 @@ public class Logs : MonoBehaviour
         
         playerMovement = GameManager.Instance.Player.GetComponent<PlayerMovement>();
         inter = GameObject.Find("---Interactables---").GetComponent<InteractManager>();
-        selector = GameManager.Instance.Player.GetComponentInChildren<Selectors>(true);
+        //selector = GameManager.Instance.Player.GetComponentInChildren<Selectors>(true);
+        selector = GameObject.Find("Main Camera").GetComponentInChildren<Selectors>(true);
         
         
 
